@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    env_file: slavicgame.env
+    environment:
+      - DB_PATH=/app/data/db.sqlite3
+      - MEDIA_ROOT=/app/media
+    volumes:
+      - db_data:/app/data
+      - media_data:/app/media
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  nginx:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - media_data:/usr/share/nginx/media:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  media_data:
