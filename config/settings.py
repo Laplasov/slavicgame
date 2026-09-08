@@ -96,3 +96,4 @@ SIMPLE_JWT = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'slavicgame.onrender.com', '.onrender.com']
