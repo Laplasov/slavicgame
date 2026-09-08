@@ -8,6 +8,10 @@ const TOKEN_KEY = 'slavic_token';
 const NICK_KEY = 'slavic_nick';
 const EPOCH_KEY = 'slavic_epoch';
 
+const API_BASE_URL = import.meta.env.PROD 
+  ? 'https://slavicgame.onrender.com' 
+  : 'http://localhost:8000';
+
 export class ApiError extends Error {
   constructor(message, status, data) {
     super(message);
@@ -53,7 +57,10 @@ export class ApiClient {
       if (ep) headers['X-Save-Epoch'] = ep;
       if (body && typeof body === 'object') body.epoch = ep;
     }
-    const res = await fetch(path, {
+
+    const fullUrl = path.startsWith('http') ? path : `${API_BASE_URL}${path}`;
+
+    const res = await fetch(fullUrl, {
       method, headers,
       body: body ? JSON.stringify(body) : undefined,
       keepalive,
