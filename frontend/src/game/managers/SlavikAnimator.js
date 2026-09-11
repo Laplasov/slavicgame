@@ -9,7 +9,9 @@ export class SlavikAnimator {
     this._currentScaleMultiplier = 1.0;
     this._targetScaleMultiplier = 1.0;
     this.easingSpeed = 12;
+    this._minClickIntervalMs = 200;
 
+    this._lastClickTime = -Infinity; 
     // Draw order matches Draw(): base, Top, Tights, Bottom, Collar (kettle)
     this.base = scene.add.image(0, 0, 'baseBody').setOrigin(0.5, 0);
     this.topLayer = scene.add.image(0, 0, 'defaultTop').setOrigin(0.5, 0).setVisible(false);
@@ -53,9 +55,14 @@ export class SlavikAnimator {
   }
 
   click() {
-    if (this.scene._inputBlocked) return
+    if (this.scene._inputBlocked) return;
+    const now = this.scene.time.now;
+    if (now - this._lastClickTime < this._minClickIntervalMs) return;
+    this._lastClickTime = now;
+
     this._currentScaleMultiplier = 0.9;
     if (this.onClicked) this.onClicked();
+
   }
 
   update(deltaSeconds) {

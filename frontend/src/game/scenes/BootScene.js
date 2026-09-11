@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { ASSETS, PLACEHOLDER_COLORS, FONT_FAMILY } from '../config.js';
+import { ASSETS, PLACEHOLDER_COLORS, FONT_FAMILY, SOUNDS } from '../config.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -12,10 +12,16 @@ export class BootScene extends Phaser.Scene {
       this.load.image(key, def.path);
     }
 
+    for (const [key, def] of Object.entries(SOUNDS)) {
+    this.load.audio(key, def.path);
+    } 
+
     this.load.on('loaderror', (file) => {
       this._failedKeys.add(file.key);
       console.warn('[BootScene] texture 404 or load error:', file.key, file.url);
     });
+
+    
   }
 
   create() {

@@ -329,5 +329,52 @@ export const itemData = {
       description: "",
       bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
     },
+     // ==========================================
+    // 8. Military OUTFIT (Configurable Collection)
+    // ==========================================
+    {
+      id: "8.1",
+      name: "Военная шапочка",
+      iconKey: "militaryKettleIcon",
+      layerKey: "militaryKettle",
+      cost: 1200,
+      type: "Kettle",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "8.2",
+      name: "Военная куртка",
+      iconKey: "militaryTopIcon",
+      layerKey: "militaryTop",
+      cost: 1200,
+      type: "Top",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "8.3",
+      name: "Военные шорты",
+      iconKey: "militaryBottomIcon",
+      layerKey: "militaryBottom",
+      cost: 1200,
+      type: "Bottom",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "8.4",
+      name: "Колготочки военные",
+      iconKey: "militaryTightsIcon",
+      layerKey: "militaryTights",
+      cost: 1200,
+      type: "Tights",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
   ]
 };

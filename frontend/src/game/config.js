@@ -9,6 +9,73 @@ export const UI_REF = { width: 800, height: 480 };
 // in case the font file is ever missing, so text never disappears.
 export const FONT_FAMILY = '"UraBumBum", Arial, sans-serif';
 
+export const SoundCategory = Object.freeze({
+  Music: 'music',
+  Sfx: 'sfx',
+});
+
+// Player-controlled category sliders — persisted separately (localStorage).
+export const DEFAULT_VOLUMES = {
+  [SoundCategory.Music]: 1.0,
+  [SoundCategory.Sfx]: 1.0,
+};
+
+/**
+ * @typedef {Object} SoundDef
+ * @property {string} path - Asset path passed to `this.load.audio(key, path)`.
+ * @property {string} category - SoundCategory.Music or SoundCategory.Sfx; which slider controls this sound.
+ * @property {Phaser.Types.Sound.SoundConfig} soundConfig - Passed directly into `this.sound.add()` / `this.sound.play()`.
+ */
+
+/** @type {Record<string, SoundDef>} */
+export const SOUNDS = {
+  mainSong: {
+    path: '/assets/audio_slavic/Polished_Petals.ogg',
+    category: SoundCategory.Music,
+    soundConfig: { loop: true, volume: 0.2 },
+  },
+  puryHigh: {
+    path: '/assets/audio_slavic/PuryHigh.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: {},
+  },
+  pury: {
+    path: '/assets/audio_slavic/Pury.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: {},
+  },
+  kiss: {
+    path: '/assets/audio_slavic/kiss.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: {},
+  },
+  yappy: {
+    path: '/assets/audio_slavic/yappy.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: { volume: 0.5, detune: 200 },
+  },
+  love: {
+    path: '/assets/audio_slavic/love.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: {},
+  },
+  hmm: {
+    path: '/assets/audio_slavic/Hmm.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: {},
+  },
+  votTak: {
+    path: '/assets/audio_slavic/vot_tak.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: {},
+  },
+  beautiful: {
+    path: '/assets/audio_slavic/beautiful.ogg',
+    category: SoundCategory.Sfx,
+    soundConfig: {},
+  },
+};
+
 // Every image the original game loaded via Content.Load<Texture2D>(...).
 // `path` is where the loader looks for it under /assets (drop your real art
 // there using these exact relative paths and it will be used automatically).
@@ -97,6 +164,16 @@ export const ASSETS = {
   officeBottom: { path: '/assets/Slavic/OfficeOutfit/office_skirt.png', w: 300, h: 480 },
   officeTightsIcon: { path: '/assets/Icons/office_tights_icon.png', w: 64, h: 64 },
   officeTights: { path: '/assets/Slavic/OfficeOutfit/office_tights.png', w: 300, h: 480 },
+
+  // Military outfit set
+  militaryKettleIcon: { path: '/assets/Icons/military_hat.png', w: 64, h: 64 },
+  militaryKettle: { path: '/assets/Slavic/MilitaryOutfit/hat.png', w: 300, h: 480 },
+  militaryTopIcon: { path: '/assets/Icons/military_jacket.png', w: 64, h: 64 },
+  militaryTop: { path: '/assets/Slavic/MilitaryOutfit/jacket.png', w: 300, h: 480 },
+  militaryBottomIcon: { path: '/assets/Icons/military_shorts.png', w: 64, h: 64 },
+  militaryBottom: { path: '/assets/Slavic/MilitaryOutfit/shorts.png', w: 300, h: 480 },
+  militaryTightsIcon: { path: '/assets/Icons/military_tights.png', w: 64, h: 64 },
+  militaryTights: { path: '/assets/Slavic/MilitaryOutfit/tights.png', w: 300, h: 480 },
 
 };
 

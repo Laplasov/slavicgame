@@ -8,6 +8,7 @@ import { BuffManager } from "../managers/BuffManager.js";
 import { ClickManager } from "../managers/ClickManager.js";
 import { WardrobeBridge } from "../wardrobe/WardrobeBridge.js";
 import { UI_REF, getDpr } from "../config.js";
+import { SoundManager } from "../managers/SoundManager.js"; 
 
 /** Как часто автосохраняем счёт, секунд. */
 const SCORE_SAVE_INTERVAL = 5;
@@ -37,6 +38,9 @@ export class GameScene extends Phaser.Scene {
 
     // --- Фон на весь экран ---
     this.background = this.add.image(0, 0, "backGround").setOrigin(0, 0);
+
+    this._sound = new SoundManager(this);
+    this._sound.setMusic('mainSong');
 
     // --- Персонаж ---
     this._slavik = new SlavikAnimator(this);
@@ -75,6 +79,7 @@ export class GameScene extends Phaser.Scene {
       if (this._scoreManager.totalHearts >= this._buffManager.monsterCost) {
         this._scoreManager.removeScore(this._buffManager.monsterCost);
         this._moodManager.increaseMood(1.0);
+        this._sound.playSound('yappy');
       }
     };
 
@@ -82,8 +87,10 @@ export class GameScene extends Phaser.Scene {
     this._slavik.onClicked = () => {
       if (this._inputBlocked) return;
       const scoreGained = this._clickManager.processClick(this._moodManager.multiplier);
-      this._scoreManager.addScore(scoreGained);
+      this._scoreManager.addScore(scoreGained + 100);
       this._clickManager.processMoodGain(this._moodManager);
+
+      this._sound.playSound(this._clickManager.wasLastClickCrit ? 'kiss' : 'puryHigh');
     };
 
     // --- Клавиатура ---
@@ -193,6 +200,9 @@ export class GameScene extends Phaser.Scene {
     // его в zombie-режим (epoch не совпадёт с текущим ApiClient)
     if (this._wardrobe && typeof this._wardrobe.destroy === 'function') {
       try { this._wardrobe.destroy(); } catch (e) { /* ignore */ }
+    }
+    if (this._sound) {
+      this._sound.destroy();
     }
   }
 }

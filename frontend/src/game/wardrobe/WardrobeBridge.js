@@ -38,6 +38,8 @@ export class WardrobeBridge {
     this._lastSentHearts = null;
     this._saveTimer = 0;
 
+    this._thanksSwitch = false;
+
     this._handleOpen = () => this.open();
     this._handleClose = () => this.close();
     this._handleSelect = (itemId) => this.select(itemId);
@@ -78,6 +80,9 @@ export class WardrobeBridge {
   }
 
   select(itemId) {
+
+    if (!this._isSceneAlive()) return;
+
     const item = this._items.getItemById(itemId);
     if (!item) return;
 
@@ -85,11 +90,13 @@ export class WardrobeBridge {
       this._slavik.equipItem(item.type, item.layerKey);
       this._save.markEquipped(item.type, item.id);
       this._emitState();
+      this._scene._sound.playSound('votTak');
       return;
     }
 
     if (this._score.totalHearts < item.cost) {
       this._emitState();
+      this._scene._sound.playSound('hmm');
       return;
     }
 
@@ -102,6 +109,11 @@ export class WardrobeBridge {
     this._save.saveScore(this._score.totalHearts);
     this._flushSave();
     this._emitState();
+
+    let thanksAudio = this._thanksSwitch ? 'love' : 'beautiful'
+    this._thanksSwitch = !this._thanksSwitch;
+
+    this._scene._sound.playSound(thanksAudio);
   }
 
   update(deltaSeconds) {
@@ -131,6 +143,9 @@ export class WardrobeBridge {
     window.removeEventListener('beforeunload', this._handleUnload);
   }
 
+  _isSceneAlive() {
+    return !!(this._scene && this._scene.sound && this._scene.sound.game);
+  }
   _flushSave() {
     const apiEpoch = ApiClient.getEpoch();
     console.log('[WardrobeBridge] flushSave: session=', this._sessionEpoch, 'api=', apiEpoch);

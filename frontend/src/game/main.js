@@ -36,8 +36,11 @@ export function startGame(parentElement, savePayload) {
       activePointers: 3,
     },
     audio: {
-      noAudio: true,
     },
+    
+    canvasStyle: 'width: 400px; height: 824px; cursor: pointer;',
+    disableContextMenu: true, 
+    
     scene: [BootScene, GameScene],
   });
 

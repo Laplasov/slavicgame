@@ -24,4 +24,9 @@ html, body, #root {
 
 #game-container canvas {
   display: block;
+  cursor: pointer;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }

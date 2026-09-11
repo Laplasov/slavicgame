@@ -205,7 +205,6 @@ export class MoodManager {
     this.text.setLineSpacing(lineSpacing);
     this.text.setFontSize(fontSize);
     this.text.setText(verticalText);
-    this.text.setVisible(false);
 
     // Подгон: пропорционально уменьшаем И шрифт, И межстрочный интервал,
     // чтобы столбик текста целиком помещался в высоту колбы
