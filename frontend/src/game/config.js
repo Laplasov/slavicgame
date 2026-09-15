@@ -175,6 +175,33 @@ export const ASSETS = {
   militaryTightsIcon: { path: '/assets/Icons/military_tights.png', w: 64, h: 64 },
   militaryTights: { path: '/assets/Slavic/MilitaryOutfit/tights.png', w: 300, h: 480 },
 
+
+  // Summer Outfit  set
+  summerTopIcon: { path: '/assets/Icons/summer_top.png', w: 64, h: 64 },
+  summerTop: { path: '/assets/Slavic/SummerOutfit/summer_top.png', w: 300, h: 480 },
+  summerBottomIcon: { path: '/assets/Icons/summer_shorts.png', w: 64, h: 64 },
+  summerBottom: { path: '/assets/Slavic/SummerOutfit/summer_shorts.png', w: 300, h: 480 },
+  summerTightsIcon: { path: '/assets/Icons/summer_shoes.png', w: 64, h: 64 },
+  summerTights: { path: '/assets/Slavic/SummerOutfit/summer_shoes.png', w: 300, h: 480 },
+
+   // Arabian Outfit  set
+  arabianKettleIcon: { path: '/assets/Icons/arabian_head.png', w: 64, h: 64 },
+  arabianKettle: { path: '/assets/Slavic/ArabianOutfit/arabian_head.png', w: 300, h: 480 },
+  arabiantopTopIcon: { path: '/assets/Icons/arabian_top.png', w: 64, h: 64 },
+  arabianTop: { path: '/assets/Slavic/ArabianOutfit/arabian_top.png', w: 300, h: 480 },
+  arabianBottomIcon: { path: '/assets/Icons/arabian_skirt.png', w: 64, h: 64 },
+  arabianBottom: { path: '/assets/Slavic/ArabianOutfit/arabian_skirt.png', w: 300, h: 480 },
+  arabianTightsIcon: { path: '/assets/Icons/arabian_trousers.png', w: 64, h: 64 },
+  arabianTights: { path: '/assets/Slavic/ArabianOutfit/arabian_trousers.png', w: 300, h: 480 },
+
+   // Cyber Outfit  set
+  cyberTopIcon: { path: '/assets/Icons/cyber_jacket.png', w: 64, h: 64 },
+  cyberTop: { path: '/assets/Slavic/CyberOutfit/cyber_jacket.png', w: 300, h: 480 },
+  cyberBottomIcon: { path: '/assets/Icons/cyber_shirts.png', w: 64, h: 64 },
+  cyberBottom: { path: '/assets/Slavic/CyberOutfit/cyber_shirts.png', w: 300, h: 480 },
+  cyberTightsIcon: { path: '/assets/Icons/cyber_tights.png', w: 64, h: 64 },
+  cyberTights: { path: '/assets/Slavic/CyberOutfit/cyber_tights.png', w: 300, h: 480 },
+
 };
 
 // Slot types (mirrors the SlotType enum: Kettle, Top, Bottom, Tights)

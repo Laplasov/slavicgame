@@ -10,6 +10,8 @@ import { WardrobeBridge } from "../wardrobe/WardrobeBridge.js";
 import { UI_REF, getDpr } from "../config.js";
 import { SoundManager } from "../managers/SoundManager.js"; 
 
+import { GachaFX } from "../ShadersFX/GachaFX.js";
+
 /** Как часто автосохраняем счёт, секунд. */
 const SCORE_SAVE_INTERVAL = 5;
 
@@ -32,6 +34,9 @@ export class GameScene extends Phaser.Scene {
   }
 
   create() {
+
+    this._gachaFX = new GachaFX(this);
+
     // --- Сохранения и каталог предметов ---
     this._saveManager = new SaveManager(this.registry.get('savePayload') || {});
     this._itemManager = new ItemManager(this._saveManager);
@@ -84,11 +89,13 @@ export class GameScene extends Phaser.Scene {
     };
 
     // Клик по персонажу -> сердца + настроение
-    this._slavik.onClicked = () => {
+    this._slavik.onClicked = (pointer) => {
       if (this._inputBlocked) return;
       const scoreGained = this._clickManager.processClick(this._moodManager.multiplier);
-      this._scoreManager.addScore(scoreGained + 100);
+      this._scoreManager.addScore(scoreGained);
       this._clickManager.processMoodGain(this._moodManager);
+
+      this._slavik.spawnClickHearts(pointer, scoreGained, this._clickManager.wasLastClickCrit)
 
       this._sound.playSound(this._clickManager.wasLastClickCrit ? 'kiss' : 'puryHigh');
     };
@@ -96,6 +103,15 @@ export class GameScene extends Phaser.Scene {
     // --- Клавиатура ---
     if (this.input.keyboard) {
       this._ctrlKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.CTRL);
+
+      this.input.keyboard.on('keydown-Z', () => {
+        if (!this._gachaFX._shader) {
+          this._gachaFX.PlayShader();
+        } else {
+          this._gachaFX.StopShader();
+        }
+      });
+
     }
 
     // Ctrl+R / Cmd+R — полный сброс прогресса
@@ -190,6 +206,8 @@ export class GameScene extends Phaser.Scene {
 
     // Отправляем в React актуальное число сердец (только пока панель открыта)
     this._wardrobe.update(deltaSeconds);
+
+    this._gachaFX.update(deltaSeconds);
   }
 
   /** Очистка при остановке сцены. */

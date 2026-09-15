@@ -24,7 +24,7 @@ export function startGame(parentElement, savePayload) {
   const start = contentSize();
 
   const game = new Phaser.Game({
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,  //CANVAS,
     parent: parentElement,
     backgroundColor: '#000000',
     width: Math.floor(start.w * dpr),

@@ -376,5 +376,129 @@ export const itemData = {
       description: "",
       bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
     },
+
+        // ==========================================
+    // 9. Summer Outfit (Configurable Collection)
+    // ==========================================
+    {
+      id: "9.1",
+      name: "Летний топ",
+      iconKey: "summerTopIcon",
+      layerKey: "summerTop",
+      cost: 1200,
+      type: "Top",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "9.2",
+      name: "Летние шорты",
+      iconKey: "summerBottomIcon",
+      layerKey: "summerBottom",
+      cost: 1200,
+      type: "Bottom",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "9.3",
+      name: "Летняя обувь",
+      iconKey: "summerTightsIcon",
+      layerKey: "summerTights",
+      cost: 1200,
+      type: "Tights",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+
+    // ==========================================
+    // 10. Arabian Outfit (Configurable Collection)
+    // ==========================================
+    {
+      id: "10.1",
+      name: "Арабский головной убор",
+      iconKey: "arabianKettleIcon",
+      layerKey: "arabianKettle",
+      cost: 1200,
+      type: "Kettle",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "10.2",
+      name: "Арабский топ",
+      // NOTE: Matches the typo 'arabiantopTopIcon' from your ASSETS config. 
+      // Consider renaming it to 'arabianTopIcon' in ASSETS for consistency.
+      iconKey: "arabiantopTopIcon",
+      layerKey: "arabianTop",
+      cost: 1200,
+      type: "Top",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "10.3",
+      name: "Арабская юбка",
+      iconKey: "arabianBottomIcon",
+      layerKey: "arabianBottom",
+      cost: 1200,
+      type: "Bottom",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "10.4",
+      name: "Арабские штаны",
+      iconKey: "arabianTightsIcon",
+      layerKey: "arabianTights",
+      cost: 1200,
+      type: "Tights",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+
+    // ==========================================
+    // 11. Cyber Outfit (Configurable Collection)
+    // ==========================================
+    {
+      id: "11.1",
+      name: "Кибер-куртка",
+      iconKey: "cyberTopIcon",
+      layerKey: "cyberTop",
+      cost: 1200,
+      type: "Top",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "11.2",
+      name: "Кибер-рубашка",
+      iconKey: "cyberBottomIcon",
+      layerKey: "cyberBottom",
+      cost: 1200,
+      type: "Bottom",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    },
+    {
+      id: "11.3",
+      name: "Кибер-колготки",
+      iconKey: "cyberTightsIcon",
+      layerKey: "cyberTights",
+      cost: 1200,
+      type: "Tights",
+      isPurchased: false,
+      description: "",
+      bonuses: { click: 0, crit: 0, passive: 0, mood: 0 }
+    }
   ]
 };

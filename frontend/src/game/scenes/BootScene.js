@@ -21,6 +21,7 @@ export class BootScene extends Phaser.Scene {
       console.warn('[BootScene] texture 404 or load error:', file.key, file.url);
     });
 
+    this.load.glsl('gachaPulse', '/assets/shaders/gachaPulse.frag.glsl');
     
   }
 
